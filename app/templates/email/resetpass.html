@@ -1,0 +1,14 @@
+<p>Beste {{ user.name }},</p>
+
+<p>Voor je Microblog-account is wachtwoordherstel aangevraagd.<br />
+Om je wachtwoord te herstellen,
+<a href="{{ url_for('resetpass', token=token, _external=True) }}">klik hier</a>,
+ of plak de volgende url in je browser:</p>
+<p>{{ url_for('resetpass', token=token, _external=True) }}</p>
+
+<p>Als je geen gebruik wilt maken van wachtwoordherstel, bijvoorbeeld omdat je dit zelf niet hebt aangevraagd, negeer dan dit bericht.</p>
+
+<p>Vriendelijke groeten,</p>
+
+<p>Erick Wilts<br />
+<i>[Microblog]</i></p>

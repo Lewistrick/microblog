@@ -1,0 +1,73 @@
+import logging
+import os
+
+from flask import Flask
+from flask_bootstrap import Bootstrap
+from flask_login import LoginManager
+from flask_mail import Mail
+from flask_migrate import Migrate
+from flask_moment import Moment
+from flask_sqlalchemy import SQLAlchemy
+from logging.handlers import SMTPHandler, RotatingFileHandler
+
+from config import Config
+
+# create the app
+app = Flask(__name__)
+app.config.from_object(Config)
+
+# initialize bootstrap
+bootstrap = Bootstrap(app)
+
+# initialize the login manager
+login = LoginManager(app)
+login.login_message = 'Je moet ingelogd zijn om deze pagina te zien.'
+# where to redirect when an unauth'ed user tries to view a protected page
+# use @login_required on top of a function in routes.py to set the page to protected
+login.login_view = 'login'
+
+# configure e-mail manager
+mail = Mail(app)
+
+# configure moment.js in order to maintain timezone consistency
+moment = Moment(app)
+
+# initialize the database
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+# stuur een mail zodra er een error plaatsvindt
+if not app.debug:
+	if app.config['MAIL_SERVER']:
+		auth = None
+		if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
+			auth = (app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
+		secure = None
+
+		# Gelukkig beschikt de logging-module over een SMTPHandler,
+		#  die alles voor je regelt wat betreft mails.
+		mail_handler = SMTPHandler(
+			mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
+			fromaddr='microblog@' + app.config['MAIL_SERVER'],
+			toaddrs=app.config['ADMINS'],
+			subject='Fout in microblog-applicatie',
+			credentials=auth,
+			secure=secure)
+		mail_handler.setLevel(logging.ERROR)
+		app.logger.addHandler(mail_handler)
+
+		# Schrijf de logs ook uit naar een bestand
+		if not os.path.exists('logs'):
+			os.mkdir('logs')
+		file_handler = RotatingFileHandler('logs/microblog.log', maxBytes=10240, backupCount=10)
+		file_handler.setFormatter(logging.Formatter(
+			'%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
+		file_handler.setLevel(logging.INFO)
+		app.logger.addHandler(file_handler)
+
+		app.logger.setLevel(logging.INFO)
+		app.logger.info('Microblog startup')
+		# app.logger.error('Test mail')
+
+# put the app import at the bottom to prevent circular imports
+from app import routes, models, errors

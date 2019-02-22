@@ -1,0 +1,156 @@
+2019-02-18 14:26:07,754 ERROR: Exception on /view_profile/Erick [GET] [in c:\anaconda\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\anaconda\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\anaconda\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\Projects\Flask\microblog\app\routes.py", line 231, in view_profile
+    nextpage=next_url, prevpage=prev_url)
+NameError: name 'prev_url' is not defined
+2019-02-18 14:26:57,610 INFO: Microblog startup [in D:\Projects\Flask\microblog\app\__init__.py:61]
+2019-02-18 14:28:32,916 INFO: Microblog startup [in D:\Projects\Flask\microblog\app\__init__.py:61]
+2019-02-18 16:08:06,780 INFO: Microblog startup [in D:\Projects\Flask\microblog\app\__init__.py:65]
+2019-02-18 16:08:13,398 ERROR: Exception on / [GET] [in c:\anaconda\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\anaconda\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\anaconda\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\Projects\Flask\microblog\app\routes.py", line 106, in index
+    nextpage=next_url, prevpage=prev_url)
+  File "c:\anaconda\lib\site-packages\flask\templating.py", line 135, in render_template
+    context, ctx.app)
+  File "c:\anaconda\lib\site-packages\flask\templating.py", line 117, in _render
+    rv = template.render(context)
+  File "c:\anaconda\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "c:\anaconda\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\anaconda\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Projects\Flask\microblog\app\templates\index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "D:\Projects\Flask\microblog\app\templates\base.html", line 1, in top-level template code
+    {% extends bootstrap/base.html %}
+  File "c:\anaconda\lib\site-packages\jinja2\environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'base' is undefined
+2019-02-18 16:08:16,028 ERROR: Exception on /favicon.ico [GET] [in c:\anaconda\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1791, in dispatch_request
+    self.raise_routing_exception(req)
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1774, in raise_routing_exception
+    raise request.routing_exception
+  File "c:\anaconda\lib\site-packages\flask\ctx.py", line 336, in match_request
+    self.url_adapter.match(return_rule=True)
+  File "c:\anaconda\lib\site-packages\werkzeug\routing.py", line 1581, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1713, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1644, in handle_http_exception
+    return handler(e)
+  File "D:\Projects\Flask\microblog\app\errors.py", line 6, in not_found_error
+    return render_template('404.html'), 404
+  File "c:\anaconda\lib\site-packages\flask\templating.py", line 135, in render_template
+    context, ctx.app)
+  File "c:\anaconda\lib\site-packages\flask\templating.py", line 117, in _render
+    rv = template.render(context)
+  File "c:\anaconda\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "c:\anaconda\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\anaconda\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Projects\Flask\microblog\app\templates\404.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Projects\Flask\microblog\app\templates\base.html", line 1, in top-level template code
+    {% extends bootstrap/base.html %}
+  File "c:\anaconda\lib\site-packages\jinja2\environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'base' is undefined
+2019-02-18 16:09:08,720 INFO: Microblog startup [in D:\Projects\Flask\microblog\app\__init__.py:65]
+2019-02-18 17:07:01,328 ERROR: Exception on /edit_profile [GET] [in c:\anaconda\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\anaconda\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\anaconda\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\Projects\Flask\microblog\app\routes.py", line 35, in edit_profile
+    return render_template('edit_profile.html', title='Profiel wijzigen', form=form)
+  File "c:\anaconda\lib\site-packages\flask\templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "c:\anaconda\lib\site-packages\jinja2\environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "c:\anaconda\lib\site-packages\jinja2\environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "c:\anaconda\lib\site-packages\jinja2\environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "c:\anaconda\lib\site-packages\jinja2\loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "c:\anaconda\lib\site-packages\jinja2\environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "c:\anaconda\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\anaconda\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Projects\Flask\microblog\app\templates\edit_profile.html", line 2, in template
+    {% import 'bootstrap/wtf.html as wtf %}
+  File "c:\anaconda\lib\site-packages\jinja2\environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "c:\anaconda\lib\site-packages\jinja2\parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "c:\anaconda\lib\site-packages\jinja2\parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "c:\anaconda\lib\site-packages\jinja2\parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "c:\anaconda\lib\site-packages\jinja2\parser.py", line 298, in parse_import
+    node = nodes.Import(lineno=next(self.stream).lineno)
+  File "c:\anaconda\lib\site-packages\jinja2\lexer.py", line 359, in __next__
+    self.current = next(self._iter)
+  File "c:\anaconda\lib\site-packages\jinja2\lexer.py", line 562, in wrap
+    for lineno, token, value in stream:
+  File "c:\anaconda\lib\site-packages\jinja2\lexer.py", line 739, in tokeniter
+    name, filename)
+jinja2.exceptions.TemplateSyntaxError: unexpected char "'" at 36
+2019-02-18 17:08:31,216 INFO: Microblog startup [in D:\Projects\Flask\microblog\app\__init__.py:65]

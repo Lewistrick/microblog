@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+	<h1>Welkom, {{ current_user.name }}!</h1>
+
+	{% if form %}
+		<div class="row">
+			<div class="col-md-4">
+				{{ wtf.quick_form(form) }}
+			</div>
+		</div>
+	{% endif %}
+
+	{% if posts %}
+		{% for post in posts %}
+			{% include 'onepost.html' %}
+		{% endfor %}
+
+		<nav aria-label="...">
+			<ul class="pager">
+				<li class="previous{% if not prev_url %} disabled{% endif %}">
+					<a href="{{ prevpage or '#' }}">&lt;&lt; Vorige pagina</a>
+				</li>
+				<li class="next{% if not next_url %} disabled{% endif %}">
+					<a href="{{ nextpage or '#' }}">Volgende pagina &gt;&gt;</a>
+				</li>
+			</ul>
+		</nav>
+	{% else %}
+		<div><p>Er zijn (nog) geen berichten van de bloggers die je volgt.</p></div>
+	{% endif %}
+{% endblock %}

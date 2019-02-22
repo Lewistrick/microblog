@@ -1,0 +1,13 @@
+Beste {{ user.name }},
+
+Voor je Microblog-account is wachtwoordherstel aangevraagd.
+Gebruik onderstaande link om het wachtwoord te herstellen.
+
+{{ url_for('resetpass', token=token, _external=True}}
+
+Als je geen gebruik wilt maken van wachtwoordherstel, bijvoorbeeld omdat je dit zelf niet hebt aangevraagd, negeer dan dit bericht.
+
+Vriendelijke groeten,
+
+Erick Wilts
+[Microblog]

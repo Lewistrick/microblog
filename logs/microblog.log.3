@@ -1,0 +1,142 @@
+2019-02-18 14:20:02,028 INFO: Microblog startup [in D:\Projects\Flask\microblog\app\__init__.py:61]
+2019-02-18 14:20:06,085 ERROR: Exception on /forgot_password [POST] [in c:\anaconda\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\anaconda\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Projects\Flask\microblog\app\routes.py", line 81, in forgot_password
+    send_passreset_email(user)
+  File "D:\Projects\Flask\microblog\app\email.py", line 27, in send_passreset_email
+    token = user.get_passreset_token()
+  File "D:\Projects\Flask\microblog\app\models.py", line 97, in get_passreset_token
+    app.config['SECRET_KEY'], algorithm="HS256").decode('utf-8')
+NameError: name 'app' is not defined
+2019-02-18 14:20:11,860 ERROR: Exception on /forgot_password [POST] [in c:\anaconda\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\anaconda\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Projects\Flask\microblog\app\routes.py", line 81, in forgot_password
+    send_passreset_email(user)
+  File "D:\Projects\Flask\microblog\app\email.py", line 27, in send_passreset_email
+    token = user.get_passreset_token()
+  File "D:\Projects\Flask\microblog\app\models.py", line 97, in get_passreset_token
+    app.config['SECRET_KEY'], algorithm="HS256").decode('utf-8')
+NameError: name 'app' is not defined
+2019-02-18 14:20:38,531 INFO: Microblog startup [in D:\Projects\Flask\microblog\app\__init__.py:61]
+2019-02-18 14:20:47,328 ERROR: Exception on /forgot_password [POST] [in c:\anaconda\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\anaconda\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Projects\Flask\microblog\app\routes.py", line 81, in forgot_password
+    send_passreset_email(user)
+  File "D:\Projects\Flask\microblog\app\email.py", line 31, in send_passreset_email
+    text_body = render_template('emails/resetpass.txt', user=user, token=token),
+  File "c:\anaconda\lib\site-packages\flask\templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "c:\anaconda\lib\site-packages\jinja2\environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "c:\anaconda\lib\site-packages\jinja2\environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "c:\anaconda\lib\site-packages\jinja2\environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "c:\anaconda\lib\site-packages\jinja2\loaders.py", line 113, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "c:\anaconda\lib\site-packages\flask\templating.py", line 58, in get_source
+    return self._get_source_fast(environment, template)
+  File "c:\anaconda\lib\site-packages\flask\templating.py", line 86, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: emails/resetpass.txt
+2019-02-18 14:21:19,283 INFO: Microblog startup [in D:\Projects\Flask\microblog\app\__init__.py:61]
+2019-02-18 14:21:25,722 ERROR: Exception on /forgot_password [POST] [in c:\anaconda\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\anaconda\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Projects\Flask\microblog\app\routes.py", line 81, in forgot_password
+    send_passreset_email(user)
+  File "D:\Projects\Flask\microblog\app\email.py", line 32, in send_passreset_email
+    html_body = render_template('email/resetpass.html', user=user, token=token)
+  File "D:\Projects\Flask\microblog\app\email.py", line 24, in sendmail
+    mail.send(msg)
+  File "c:\anaconda\lib\site-packages\flask_mail.py", line 492, in send
+    message.send(connection)
+  File "c:\anaconda\lib\site-packages\flask_mail.py", line 427, in send
+    connection.send(self)
+  File "c:\anaconda\lib\site-packages\flask_mail.py", line 175, in send
+    assert message.send_to, "No recipients have been added"
+AssertionError: No recipients have been added
+2019-02-18 14:22:00,495 INFO: Microblog startup [in D:\Projects\Flask\microblog\app\__init__.py:61]
+2019-02-18 14:24:19,205 ERROR: Exception on /resetpass/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTA0OTc5MjcuMTY1NzEwNywicmVzZXRfcGFzcyI6MX0.sTGOfMvexSM3Ysss2SLsdYJEUG1zxSfXIGYDvJKZrDQ [GET] [in c:\anaconda\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\anaconda\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Projects\Flask\microblog\app\routes.py", line 182, in resetpass
+    form = ResetPassForm()
+NameError: name 'ResetPassForm' is not defined
+2019-02-18 14:25:12,059 INFO: Microblog startup [in D:\Projects\Flask\microblog\app\__init__.py:61]
+2019-02-18 14:25:22,081 ERROR: Exception on /resetpass/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTA0OTc5MjcuMTY1NzEwNywicmVzZXRfcGFzcyI6MX0.sTGOfMvexSM3Ysss2SLsdYJEUG1zxSfXIGYDvJKZrDQ [POST] [in c:\anaconda\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\anaconda\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\anaconda\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\Projects\Flask\microblog\app\routes.py", line 185, in resetpass
+    user.set_password(form.pw.data)
+AttributeError: 'User' object has no attribute 'set_password'
+2019-02-18 14:25:44,914 INFO: Microblog startup [in D:\Projects\Flask\microblog\app\__init__.py:61]

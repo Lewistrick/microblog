@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+	<h1>Registreren nieuwe gebruiker</h1>
+	<div class="row">
+		<div class="col-md-4">
+			{{ wtf.quick_form(form) }}
+	<form action="" method="post">
+		{{ form.hidden_tag() }}
+		<p>
+			{{ form.un.label }}<br />
+			{{ form.un(size=32) }}<br />
+			{% for err in form.un.errors %}
+			<span style="color: red;">{{ err }}</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.mail.label }}<br />
+			{{ form.mail(size=64) }}<br />
+			{% for err in form.mail.errors %}
+			<span style="color: red;">{{ err }}</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.pw.label }}<br />
+			{{ form.pw(size=32) }}<br />
+			{% for err in form.pw.errors %}
+			<span style="color: red;">{{ err }}</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.pw_check.label }}<br />
+			{{ form.pw_check(size=32) }}<br />
+			{% for err in form.pw_check.errors %}
+			<span style="color: red;">{{ err }}</span>
+			{% endfor %}
+		</p>
+		<p>{{ form.submit() }}</p>
+	</form>
+{% endblock %}

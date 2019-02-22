@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+	<h1>Er is een onverwachte fout opgetreden.</h1>
+	<p>De fout is opgeslagen en de admin is op de hoogte gebracht.</p>
+	<p><a href="{{ url_for('index') }}">Ga terug</a></p>
+{% endblock %}

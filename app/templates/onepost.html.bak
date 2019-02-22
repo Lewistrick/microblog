@@ -1,0 +1,16 @@
+<table class="table table-hover">
+	<tr>
+		<td width="100px">
+			<a href="{{ url_for('view_profile', username=post.author.name) }}">
+				<img src='{{ post.author.avatar(size=100) }}' />
+				<br />
+				<b>{{ post.author.name }}</b>
+			</a>
+		</td>
+		<td>
+			<span style="font-size: 0.8em">{{ moment(post.timestamp).format('LLL') }}</span><br />
+			<span id="post{{ post.id }}">{{ post.content }}</span><br />
+			<span id="analyse{{ post.id }}"><a href="#">Tekstanalyse</a></span>
+		</td>
+	</tr>
+</table>

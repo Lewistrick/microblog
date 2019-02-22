@@ -1,0 +1,63 @@
+from flask_wtf import FlaskForm
+from wtforms import BooleanField, PasswordField, StringField, SubmitField, TextAreaField
+from wtforms.validators import DataRequired, ValidationError, Email, EqualTo, Length
+from app.models import User
+
+class EditProfileForm(FlaskForm):
+	un = StringField('Gebruiker', validators=[DataRequired()])
+	abt = TextAreaField('Over mij', validators=[Length(max=200)])
+	submit = SubmitField('Wijzig')
+
+	# Bij dit formulier moeten er checks worden gedaan of de ingevulde gebruikersnaam al bestaat,
+	#  behalve wanneer de ingevulde naam van de gebruiker zelf is (dus niet veranderd moet worden).
+	# Daarom wordt een veld 'curruser' geintroduceerd als uitbreiding van het FlaskForm,
+	# dat de huidige gebruiker bijhoudt. Zie ook `validate_un()` en `edit_profile()` in routes.py.
+	def __init__(self, curruser, *args, **kwargs):
+		super(EditProfileForm, self).__init__(*args, **kwargs)
+		self.curruser = curruser
+
+	def validate_un(self, name):
+		# Controleer dit veld alleen als de ingevulde gebruikersnaam gewijzigd is
+		if name.data != self.curruser:
+			userobj = User.query.filter_by(name=self.un.data).first()
+			if userobj is not None:
+				raise ValidationError('Deze gebruikersnaam bestaat al; gebruik een andere.')
+
+class LoginForm(FlaskForm):
+	# Below are not instance attributes, but global variables of the class
+	un = StringField('Gebruiker', validators=[DataRequired()])
+	pw = PasswordField('Wachtwoord', validators=[DataRequired()])
+	remember = BooleanField('Onthoud mij')
+	submit = SubmitField('Inloggen')
+
+class PasswordForgottenForm(FlaskForm):
+	mail = StringField('E-mailadres', validators=[DataRequired(), Email()])
+	submit = SubmitField('Wachtwoord resetten')
+
+class PostForm(FlaskForm):
+	msg = TextAreaField('Schrijf iets', validators=[DataRequired(), Length(min=4, max=280)])
+	submit = SubmitField('Nieuwe post')
+
+class RegistrationForm(FlaskForm):
+	un = StringField('Gebruiker', validators=[DataRequired()])
+	mail = StringField('E-mailadres', validators=[DataRequired(), Email()])
+	pw = PasswordField('Wachtwoord', validators=[DataRequired()])
+	pw_check = PasswordField('Herhaal wachtwoord', validators=[DataRequired(), EqualTo('pw')])
+	submit = SubmitField('Nieuwe gebruiker')
+
+	# Functies met het patroon 'validate_XXX' valideren het veld XXX van dit form
+	#  en worden automatisch toegevoegd aan de lijst met validators van dat veld
+	def validate_un(self, name):
+		user = User.query.filter_by(name=name.data).first()
+		if user is not None:
+			raise ValidationError('Er bestaat al een gebruiker met deze naam.')
+
+	def validate_mail(self, mail):
+		user = User.query.filter_by(email=mail.data).first()
+		if user is not None:
+			raise ValidationError('Er bestaat al een gebruiker met dit e-mailadres.')
+
+class ResetPassForm(FlaskForm):
+	pw = PasswordField('Wachtwoord', validators=[DataRequired()])
+	pw_check = PasswordField('Herhaal wachtwoord', validators=[DataRequired(), EqualTo('pw')])
+	submit = SubmitField('Herstel wachtwoord')
